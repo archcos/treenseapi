@@ -9,7 +9,7 @@ import io
 app = Flask(__name__)
 
 # Load the TFLite model
-model_path = "nonplant.tflite"  # Update with your actual model path
+model_path = "health_model.tflite"  # Update with your actual model path
 interpreter = tf.lite.Interpreter(model_path=model_path)
 interpreter.allocate_tensors()
 
@@ -19,7 +19,7 @@ output_details = interpreter.get_output_details()
 
 # Define the image size expected by the model
 IMAGE_SIZE = 180  # Update based on your model's expected input size
-class_names = ["healthy", "notplant"]  # Adjust class names as per your model
+class_names = ["healthy", "unhealthy"]  # Adjust class names as per your model
 
 # Preprocessing function to resize and normalize the image
 def preprocess_image(image):
